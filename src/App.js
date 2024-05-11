@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Contador from './Components/Contador/Contador';
+import SelectCidadeIBGE from './Components/SelectCidadeIBGE/SelectCidadeIBGE';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn React
         </a>
         <Contador />
+        <SelectCidadeIBGE uf="ac"/>
       </header>
     </div>
   );
