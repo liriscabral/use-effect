@@ -21,7 +21,7 @@ const SelectCidadeIBGE = (props) => {
         }
 
         loadCidade();
-    },[props.uf]);
+    }, [props.uf]);
 
     return (
         <Fragment>
