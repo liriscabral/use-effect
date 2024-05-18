@@ -7,7 +7,12 @@ const SelectCidadeIBGE = (props) => {
     useEffect(() => {
         const loadCidade = async () => { // async antes da passagem de parametro
             try {
-                const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${props.uf}/distritos`);   //fetch é uma api do js que consome requisições web
+                let response;
+                if (props.uf) {
+                    response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${props.uf}/distritos?orderBy=nome`);   //fetch é uma api do js que consome requisições web
+                } else {
+                    response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome');
+                }
                 if (!response.ok) {
                     throw new Error("Ops! Algo deu errado :(");
                 }
@@ -25,17 +30,15 @@ const SelectCidadeIBGE = (props) => {
 
     return (
         <Fragment>
-            <label>Cidade:</label>
+            <label>Selecione uma Cidade:</label>
             <select id="cidade">
                 {cidades.map(cidade => (
                     <option key={cidade.id} value={cidade.nome}>
                         {cidade.nome}
                     </option>
                 ))}
-
             </select>
         </Fragment>
-
     );
 }
 
